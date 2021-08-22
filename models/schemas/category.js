@@ -9,7 +9,7 @@ const categorySchema = Schema(
     type: {
       type: String,
       enum: ['+', '-'],
-      required: [true, 'Name is required'],
+      required: [true, 'Type is required'],
     },
   },
   { versionKey: false, timestamps: true },
