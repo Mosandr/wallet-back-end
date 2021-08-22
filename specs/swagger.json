@@ -95,10 +95,15 @@
           },
           "name": {
             "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "description": "Enum {\"+\" or \"-\"}"
           }
         },
         "required": [
-          "name"
+          "name",
+          "type"
         ]
       }
     }
