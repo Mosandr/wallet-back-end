@@ -5,6 +5,7 @@ const auth = require('../middlewares/auth')
 
 const { validateCreateCategory } = require('../validation/category')
 
-router.post('/', auth, validateCreateCategory, ctrl.add)
+// router.post('/', validateCreateCategory, ctrl.add)
+router.get('/', auth, ctrl.getAll)
 
 module.exports = router

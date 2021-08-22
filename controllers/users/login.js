@@ -20,7 +20,7 @@ const login = async (req, res, next) => {
       id: user._id,
     }
 
-    const token = jwt.sign(payload, PASSPORT_SECRET_KEY, { expiresIn: '1h' })
+    const token = jwt.sign(payload, PASSPORT_SECRET_KEY, { expiresIn: '12h' })
     await user.update({ token })
 
     res.json({
