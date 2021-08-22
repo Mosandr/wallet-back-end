@@ -13,6 +13,9 @@ const categoriesRouter = require('./routes/categories')
 const app = express()
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
+const swaggerUi = require('swagger-ui-express')
+const specs = require('./specs/swagger.json')
+
 app.use(helmet())
 app.disable('x-powered-by')
 app.set('trust proxy', 1)
@@ -23,9 +26,8 @@ app.use(express.json({ limit: 10000 }))
 
 require('./configs/passport-config')
 
-app.use(express.static(path.join(__dirname, 'public')))
-
-app.use('/api/', apiLimiter)
+app.use('/api', apiLimiter)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 app.use('/api/users', usersRouter)
 app.use('/api/transactions', transactionsRouter)

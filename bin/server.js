@@ -10,6 +10,7 @@ db.then(() => {
   console.log('Database connection successful')
   app.listen(PORT, async () => {
     console.log(`Server running. Use our API on port: ${PORT}`)
+    console.log(`Read Documentation on: http://localhost:${PORT}/api-docs`)
   })
 }).catch(error => {
   console.log(`Server not running. Error message:${error.message}`)
