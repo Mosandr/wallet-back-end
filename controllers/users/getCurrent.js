@@ -1,4 +1,5 @@
 const { HttpCode } = require('../../helpers/constants')
+const { user: service } = require('../../services')
 
 const getCurrent = async (req, res, next) => {
   try {
@@ -8,17 +9,21 @@ const getCurrent = async (req, res, next) => {
       return res.status(HttpCode.UNAUTHORIZED).json({
         status: 'error',
         code: HttpCode.UNAUTHORIZED,
-        message: 'Unauthorized'
+        message: 'Unauthorized',
       })
     }
 
     return res.status(HttpCode.OK).json({
       status: 'success',
       code: HttpCode.OK,
+      message: 'Find current user',
       data: {
-        email: user.email,
-        subscription: user.subscription
-      }
+        user: {
+          name: user.name,
+          email: user.email,
+          totalBalance: user.totalBalance,
+        },
+      },
     })
   } catch (error) {
     next(error)
