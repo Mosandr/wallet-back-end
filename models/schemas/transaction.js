@@ -5,7 +5,7 @@ const transactionSchema = Schema(
     date: {
       type: String,
       match: [
-        /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.(\d{2})\s*$/,
+        /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((20)\d{2})\s*$/,
         'Date must be in format DD.MM.YY',
       ],
       required: [true, 'Date is required'],
