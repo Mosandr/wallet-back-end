@@ -1,7 +1,8 @@
 const { User } = require('../models')
 
 const add = async ({ name, email, password }) => {
-  const newUser = await new User({ name, email })
+  const totalBalance = 0
+  const newUser = await new User({ name, email, totalBalance })
   newUser.setPassword(password)
   await newUser.save()
   return newUser

@@ -9,7 +9,7 @@ const register = async (req, res, next) => {
       status: 'error',
       code: HttpCode.CONFLICT,
       message: 'Email is already in use',
-      data: 'Conflict'
+      data: 'Conflict',
     })
   }
 
@@ -22,9 +22,9 @@ const register = async (req, res, next) => {
       data: {
         user: {
           email: newUser.email,
-          subscription: newUser.subscription
-        }
-      }
+          name: newUser.name,
+        },
+      },
     })
   } catch (error) {
     next(error)

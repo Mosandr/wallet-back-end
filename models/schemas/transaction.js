@@ -2,13 +2,21 @@ const { Schema } = require('mongoose')
 
 const transactionSchema = Schema(
   {
+    timeStamp: {
+      type: Number,
+      required: [true, 'TimeStamp is required'],
+    },
     date: {
       type: String,
-      match: [
-        /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((20)\d{2})\s*$/,
-        'Date must be in format DD.MM.YY',
-      ],
       required: [true, 'Date is required'],
+    },
+    month: {
+      type: String,
+      required: [true, 'Month is required'],
+    },
+    year: {
+      type: String,
+      required: [true, 'Year is required'],
     },
     type: {
       type: String,
@@ -22,7 +30,7 @@ const transactionSchema = Schema(
     },
     comment: {
       type: String,
-      required: [true, 'Comment is required'],
+      default: 'No comment',
     },
     sum: {
       type: Number,
@@ -32,6 +40,10 @@ const transactionSchema = Schema(
       type: Schema.Types.ObjectId,
       ref: 'user',
       required: [true, 'Owner is required'],
+    },
+    monthlyBalance: {
+      type: Number,
+      required: [true, 'MonthlyBalance is required'],
     },
   },
   { versionKey: false, timestamps: true },
