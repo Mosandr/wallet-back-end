@@ -43,6 +43,14 @@
           "date": {
             "type": "string"
           },
+          "month": {
+            "type": "string",
+            "description": "Autogenerate from Date"
+          },
+          "year": {
+            "type": "string",
+            "description": "Autogenerate from Date"
+          },
           "type": {
             "type": "string"
           },
