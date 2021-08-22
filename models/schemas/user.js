@@ -1,5 +1,4 @@
 const { Schema } = require('mongoose')
-
 const bCrypt = require('bcryptjs')
 
 const userSchema = Schema(
@@ -21,7 +20,7 @@ const userSchema = Schema(
       type: String,
       required: [true, 'Password is required'],
     },
-    totalBallance: {
+    totalBalance: {
       type: Number,
       required: [true, 'TotalBallance required'],
     },

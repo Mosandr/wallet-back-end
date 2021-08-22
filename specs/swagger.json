@@ -75,6 +75,10 @@
             "type": "number",
             "description": "Number >=0"
           },
+          "owner": {
+            "type": "string",
+            "description": "User Id"
+          },
           "monthlyBalance": {
             "type": "number",
             "description": "Calculated by server Monthly balance at time of transaction"
@@ -124,7 +128,7 @@
       "post": {
         "summary": "Create new user.",
         "tags": [
-          "users"
+          "Users"
         ],
         "responses": {
           "200": {
