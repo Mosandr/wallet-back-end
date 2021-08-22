@@ -13,7 +13,6 @@ const login = async (req, res, next) => {
         status: 'error',
         code: HttpCode.UNAUTHORIZED,
         message: 'Email or password is wrong',
-        data: 'Unauthorized',
       })
     }
 
@@ -27,11 +26,12 @@ const login = async (req, res, next) => {
     res.json({
       status: 'success',
       code: HttpCode.OK,
+      message: 'Successful login',
       data: {
-        token,
         user: {
           email: user.email,
           name: user.name,
+          token: token,
         },
       },
     })

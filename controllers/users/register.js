@@ -9,7 +9,6 @@ const register = async (req, res, next) => {
       status: 'error',
       code: HttpCode.CONFLICT,
       message: 'Email is already in use',
-      data: 'Conflict',
     })
   }
 
