@@ -20,7 +20,7 @@ const schemaLogin = Joi.object({
       tlds: { allow: ['com', 'net'] },
     })
     .required(),
-  password: Joi.string().min(8).max(20).required(),
+  password: Joi.string().min(6).max(20).required(),
 })
 
 const validateUser = (schema, body, next) => {

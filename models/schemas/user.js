@@ -4,6 +4,10 @@ const bCrypt = require('bcryptjs')
 
 const userSchema = Schema(
   {
+    name: {
+      type: String,
+      required: [true, 'Name is required'],
+    },
     email: {
       type: String,
       match: [
@@ -17,9 +21,9 @@ const userSchema = Schema(
       type: String,
       required: [true, 'Password is required'],
     },
-    name: {
-      type: String,
-      required: [true, 'Name is required'],
+    totalBallance: {
+      type: Number,
+      required: [true, 'TotalBallance required'],
     },
     token: {
       type: String,
