@@ -1,5 +1,4 @@
 const express = require('express')
-const path = require('path')
 const logger = require('morgan')
 const cors = require('cors')
 const { HttpCode } = require('./helpers/constants')
@@ -37,7 +36,7 @@ app.use((req, res, next) => {
   res.status(HttpCode.NOT_FOUND).json({
     status: 'error',
     code: HttpCode.NOT_FOUND,
-    message: `Use api on routes ${req.baseUrl}/api/contacts`,
+    message: `Read docs on /api-docs`,
     data: 'Not Found',
   })
 })

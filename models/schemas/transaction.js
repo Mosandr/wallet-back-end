@@ -1,4 +1,5 @@
 const { Schema } = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate-v2')
 
 const transactionSchema = Schema(
   {
@@ -48,5 +49,7 @@ const transactionSchema = Schema(
   },
   { versionKey: false, timestamps: true },
 )
+
+transactionSchema.plugin(mongoosePaginate)
 
 module.exports = transactionSchema

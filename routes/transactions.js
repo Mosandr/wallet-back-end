@@ -5,6 +5,7 @@ const auth = require('../middlewares/auth')
 
 const { validateCreateTransaction } = require('../validation/transaction')
 
-router.post('/', auth, validateCreateTransaction, ctrl.add)
+router.get('/', auth, ctrl.getAllMonthly)
+router.post('/create', auth, validateCreateTransaction, ctrl.add)
 
 module.exports = router
