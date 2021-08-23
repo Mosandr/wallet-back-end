@@ -24,7 +24,7 @@ const register = async (req, res, next) => {
     }
 
     const token = jwt.sign(payload, PASSPORT_SECRET_KEY, { expiresIn: '12h' })
-    await newUser.update({ token })
+    await newUser.updateOne({ token })
 
     res.status(HttpCode.CREATED).json({
       status: 'success',

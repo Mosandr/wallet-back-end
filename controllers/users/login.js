@@ -1,5 +1,6 @@
 const { user: service } = require('../../services')
 const { HttpCode } = require('../../helpers/constants')
+const { User } = require('../../models')
 const jwt = require('jsonwebtoken')
 
 require('dotenv').config()
@@ -28,7 +29,7 @@ const login = async (req, res, next) => {
     }
 
     const token = jwt.sign(payload, PASSPORT_SECRET_KEY, { expiresIn: '12h' })
-    await user.update({ token })
+    await User.updateOne({ _id: user._id }, { token })
 
     res.json({
       status: 'success',

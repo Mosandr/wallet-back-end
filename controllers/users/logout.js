@@ -1,4 +1,5 @@
 const { HttpCode } = require('../../helpers/constants')
+const { User } = require('../../models')
 
 const logout = async (req, res, next) => {
   try {
@@ -8,14 +9,14 @@ const logout = async (req, res, next) => {
       return res.status(HttpCode.UNAUTHORIZED).json({
         status: 'error',
         code: HttpCode.UNAUTHORIZED,
-        message: 'Unauthorized'
+        message: 'Unauthorized',
       })
     }
 
-    await user.updateOne({ token: null })
+    await User.updateOne({ _id: user._id }, { token: null })
     return res.status(HttpCode.NO_CONTENT).json({
       status: 'No content',
-      code: HttpCode.NO_CONTENT
+      code: HttpCode.NO_CONTENT,
     })
   } catch (error) {
     next(error)
