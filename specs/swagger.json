@@ -53,7 +53,7 @@
           },
           "timeStamp": {
             "type": "number",
-            "description": "Time stamp in ms"
+            "description": "Unix timestamp in ms"
           },
           "date": {
             "type": "string",
