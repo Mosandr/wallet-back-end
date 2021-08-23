@@ -34,7 +34,7 @@ const getlastTransaction = async (userId, month, year) => {
     { owner: userId, month, year },
     {
       select: 'date timeStamp category sum monthlyBalance',
-      sort: { timeStamp: -1 },
+      sort: { timeStamp: 1, createdAt: 1 },
     },
   )
 
@@ -57,7 +57,7 @@ const getAll = async (userId, query) => {
   const options = {
     page,
     limit,
-    sort: { timeStamp: sortOrder },
+    sort: { timeStamp: sortOrder, createdAt: sortOrder },
     select:
       'timeStamp date month year type category comment sum owner monthlyBalance',
   }
