@@ -32,7 +32,10 @@ const add = async ({
 const getlastTransaction = async (userId, month, year) => {
   const { docs } = await Transaction.paginate(
     { owner: userId, month, year },
-    { select: 'date category sum monthlyBalance', sort: { timeStamp: -1 } },
+    {
+      select: 'date timeStamp category sum monthlyBalance',
+      sort: { timeStamp: -1 },
+    },
   )
 
   return docs.length === 0 ? null : docs[0]

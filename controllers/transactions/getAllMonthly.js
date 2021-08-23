@@ -4,8 +4,6 @@ const { HttpCode } = require('../../helpers/constants')
 const getAllMonthly = async (req, res, next) => {
   const { id: userId } = req.user
 
-  console.log(userId)
-
   try {
     const transactionsList = await service.getAll(userId, req.query)
 

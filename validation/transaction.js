@@ -3,10 +3,9 @@ const Joi = require('joi')
 const { HttpCode } = require('../helpers/constants')
 
 const schemaCreate = Joi.object({
-  timeStamp: Joi.number().min(1629657231450).required(),
-  type: Joi.string().valid('+', '-').required(),
+  timeStamp: Joi.number().min(1).required(),
   category: Joi.string().required(),
-  comment: Joi.string().min(3).max(300),
+  comment: Joi.string().min(2).max(300),
   sum: Joi.number().required(),
 })
 
