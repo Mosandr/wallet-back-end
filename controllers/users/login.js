@@ -16,13 +16,6 @@ const login = async (req, res, next) => {
         message: 'Email or password is wrong',
       })
     }
-    if (user.token) {
-      return res.status(HttpCode.FORBIDDEN).json({
-        status: 'error',
-        code: HttpCode.FORBIDDEN,
-        message: 'You are already login',
-      })
-    }
 
     const payload = {
       id: user._id,
