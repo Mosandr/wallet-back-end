@@ -1,7 +1,7 @@
 const { Category } = require('../models')
 
-const add = async ({ name, type }) => {
-  const newCategory = await new Category({ name, type })
+const add = async ({ name, type, color }) => {
+  const newCategory = await new Category({ name, type, color })
   await newCategory.save()
   return newCategory
 }

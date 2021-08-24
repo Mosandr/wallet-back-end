@@ -11,6 +11,10 @@ const categorySchema = Schema(
       enum: ['+', '-'],
       required: [true, 'Type is required'],
     },
+    color: {
+      type: String,
+      required: [true, 'Color is required'],
+    },
   },
   { versionKey: false, timestamps: true },
 )

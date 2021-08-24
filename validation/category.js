@@ -5,6 +5,7 @@ const { HttpCode } = require('../helpers/constants')
 const schemaCreate = Joi.object({
   name: Joi.string().min(3).max(20).required(),
   type: Joi.valid('+', '-').required(),
+  color: Joi.string().min(7).max(7).required(),
 })
 
 const validateCategory = (schema, body, next) => {

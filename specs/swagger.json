@@ -110,11 +110,16 @@
           "type": {
             "type": "string",
             "description": "Enum {\"+\" or \"-\"}"
+          },
+          "color": {
+            "type": "string",
+            "description": "Hex color"
           }
         },
         "required": [
           "name",
-          "type"
+          "type",
+          "color"
         ]
       }
     }
