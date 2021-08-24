@@ -60,6 +60,7 @@ const getAll = async (userId, query) => {
     sort: { timeStamp: sortOrder, createdAt: sortOrder },
     select:
       'timeStamp date month year type category comment sum owner monthlyBalance',
+    populate: { path: 'category', select: 'type name' },
   }
 
   const opt = { ...options }

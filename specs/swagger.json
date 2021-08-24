@@ -924,8 +924,20 @@
                                 "description": "Enum {\"+\" or \"-\"}"
                               },
                               "category": {
-                                "type": "string",
-                                "description": "Category Id"
+                                "type": "object",
+                                "properties": {
+                                  "_id": {
+                                    "type": "string"
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "Продукты"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "example": "-"
+                                  }
+                                }
                               },
                               "comment": {
                                 "type": "string"
