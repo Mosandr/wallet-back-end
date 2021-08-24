@@ -8,6 +8,9 @@
   "servers": [
     {
       "url": "http://localhost:3001/api"
+    },
+    {
+      "url": "https://wallet-goit.herokuapp.com/api"
     }
   ],
   "components": {
