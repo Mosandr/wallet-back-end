@@ -1,5 +1,4 @@
 const express = require('express')
-const path = require('path')
 const logger = require('morgan')
 const cors = require('cors')
 const { HttpCode } = require('./helpers/constants')
@@ -13,6 +12,9 @@ const categoriesRouter = require('./routes/categories')
 const app = express()
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
+const swaggerUi = require('swagger-ui-express')
+const specs = require('./specs/swagger.json')
+
 app.use(helmet())
 app.disable('x-powered-by')
 app.set('trust proxy', 1)
@@ -23,9 +25,8 @@ app.use(express.json({ limit: 10000 }))
 
 require('./configs/passport-config')
 
-app.use(express.static(path.join(__dirname, 'public')))
-
-app.use('/api/', apiLimiter)
+app.use('/api', apiLimiter)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 app.use('/api/users', usersRouter)
 app.use('/api/transactions', transactionsRouter)
@@ -35,7 +36,7 @@ app.use((req, res, next) => {
   res.status(HttpCode.NOT_FOUND).json({
     status: 'error',
     code: HttpCode.NOT_FOUND,
-    message: `Use api on routes ${req.baseUrl}/api/contacts`,
+    message: `Read docs on /api-docs`,
     data: 'Not Found',
   })
 })

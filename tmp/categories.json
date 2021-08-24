@@ -1,0 +1,156 @@
+[
+  {
+    "_id": {
+      "$oid": "6124b052cab0f143c8d6bfa9"
+    },
+    "name": "Регулярный доход",
+    "type": "+",
+    "color": "#00AD84",
+    "createdAt": {
+      "$date": "2021-08-24T08:39:46.208Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:39:46.208Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b064cab0f143c8d6bfab"
+    },
+    "name": "Нерегулярный доход",
+    "type": "+",
+    "color": "#00AD84",
+    "createdAt": {
+      "$date": "2021-08-24T08:40:04.987Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:40:04.987Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b072cab0f143c8d6bfad"
+    },
+    "name": "Кафе и рестораны",
+    "type": "-",
+    "color": "#00AD84",
+    "createdAt": {
+      "$date": "2021-08-24T08:40:18.774Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:40:18.774Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b080cab0f143c8d6bfaf"
+    },
+    "name": "Продукты",
+    "type": "-",
+    "color": "#FFD8D0",
+    "createdAt": {
+      "$date": "2021-08-24T08:40:32.734Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:40:32.734Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b08bcab0f143c8d6bfb1"
+    },
+    "name": "Авто",
+    "type": "-",
+    "color": "#FD9498",
+    "createdAt": {
+      "$date": "2021-08-24T08:40:43.349Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:40:43.349Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b09acab0f143c8d6bfb3"
+    },
+    "name": "Образование",
+    "type": "-",
+    "color": "#81E1FF",
+    "createdAt": {
+      "$date": "2021-08-24T08:40:58.812Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:40:58.812Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b0a3cab0f143c8d6bfb5"
+    },
+    "name": "Дети",
+    "type": "-",
+    "color": "#6E78E8",
+    "createdAt": {
+      "$date": "2021-08-24T08:41:07.758Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:41:07.758Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b0adcab0f143c8d6bfb7"
+    },
+    "name": "Дом",
+    "type": "-",
+    "color": "#4A56E2",
+    "createdAt": {
+      "$date": "2021-08-24T08:41:17.603Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:41:17.603Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b0b6cab0f143c8d6bfb9"
+    },
+    "name": "Досуг",
+    "type": "-",
+    "color": "#24CCA7",
+    "createdAt": {
+      "$date": "2021-08-24T08:41:26.083Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:41:26.083Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b0becab0f143c8d6bfbb"
+    },
+    "name": "Красота и здоровье",
+    "type": "-",
+    "color": "#C5BAFF",
+    "createdAt": {
+      "$date": "2021-08-24T08:41:34.878Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:41:34.878Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "6124b0cacab0f143c8d6bfbd"
+    },
+    "name": "Разное",
+    "type": "-",
+    "color": "#FED057",
+    "createdAt": {
+      "$date": "2021-08-24T08:41:46.133Z"
+    },
+    "updatedAt": {
+      "$date": "2021-08-24T08:41:46.133Z"
+    }
+  }
+]
