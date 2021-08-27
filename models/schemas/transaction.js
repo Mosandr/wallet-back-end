@@ -42,7 +42,7 @@ const transactionSchema = Schema(
       ref: 'user',
       required: [true, 'Owner is required'],
     },
-    monthlyBalance: {
+    balance: {
       type: Number,
       required: [true, 'MonthlyBalance is required'],
     },

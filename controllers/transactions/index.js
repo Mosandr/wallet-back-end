@@ -1,7 +1,7 @@
 const add = require('./add')
-const getAllMonthly = require('./getAllMonthly')
+const getAll = require('./getAll')
 
 module.exports = {
   add,
-  getAllMonthly,
+  getAll,
 }

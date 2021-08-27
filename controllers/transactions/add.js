@@ -11,14 +11,14 @@ const add = async (req, res, next) => {
   try {
     const { type } = await Category.findOne({ _id: category }, ['type'])
 
-    let balance
-    type === '+' ? (balance = Number(sum)) : (balance = -Number(sum))
+    let newSum
+    type === '+' ? (newSum = Number(sum)) : (newSum = -Number(sum))
 
     const date = dateParser.getDate(+timeStamp)
     const month = dateParser.getMonth(+timeStamp)
     const year = dateParser.getYear(+timeStamp)
 
-    let monthlyBalance = 0
+    const balance = newSum
 
     const newTransaction = {
       ...req.body,
@@ -27,68 +27,38 @@ const add = async (req, res, next) => {
       month,
       year,
       owner: userId,
-      monthlyBalance,
+      balance,
     }
 
-    const lastTransaction = await service.getlastTransaction(
+    const previousTransaction = await service.getPreviousTransaction(
       userId,
-      month,
-      year,
+      timeStamp,
     )
 
-    if (lastTransaction && lastTransaction.timeStamp < timeStamp) {
-      newTransaction.monthlyBalance = lastTransaction.monthlyBalance + balance
-
-      const transaction = await service.add(newTransaction)
-      const user = await User.findOne({ _id: userId })
-
-      const totalBalance = Number(user.totalBalance) + Number(balance)
-      await User.updateOne({ _id: userId }, { totalBalance })
-
-      return res.status(HttpCode.CREATED).json({
-        status: 'succes',
-        code: HttpCode.CREATED,
-        message: 'Transaction successfully created',
-        data: {
-          transaction: {
-            _id: transaction._id,
-            timeStamp: transaction.timeStamp,
-            date: transaction.date,
-            type: transaction.type,
-            category: transaction.category,
-            ['comment']: transaction['comment'],
-            sum: transaction.sum,
-            monthlyBalance: transaction.monthlyBalance,
-          },
-        },
-      })
+    if (previousTransaction) {
+      newTransaction.balance = previousTransaction.balance + newSum
     }
 
     const transaction = await service.add(newTransaction)
     const user = await User.findOne({ _id: userId })
 
-    const totalBalance = Number(user.totalBalance) + Number(balance)
+    const totalBalance = Number(user.totalBalance) + Number(newSum)
     await User.updateOne({ _id: userId }, { totalBalance })
 
-    const { docs: listOfMonthTransactions } = await service.getAll(userId, {
-      month,
-      year,
-      sortOrder: 1,
-    })
-
-    await Promise.all(
-      listOfMonthTransactions.map(item => {
-        const { _id, type, sum } = item
-        type === '+'
-          ? (monthlyBalance += Number(sum))
-          : (monthlyBalance -= Number(sum))
-        return Transaction.updateOne({ _id }, { monthlyBalance })
-      }),
+    const afterTransactions = await service.getAfterTransactions(
+      userId,
+      timeStamp,
     )
 
-    const updateTransaction = await Transaction.findOne({
-      _id: transaction._id,
-    })
+    if (afterTransactions) {
+      await Promise.all(
+        afterTransactions.map(item => {
+          const { _id, balance } = item
+          const newBalance = balance + newSum
+          return Transaction.updateOne({ _id }, { balance: newBalance })
+        }),
+      )
+    }
 
     return res.status(HttpCode.CREATED).json({
       status: 'succes',
@@ -96,14 +66,14 @@ const add = async (req, res, next) => {
       message: 'Transaction successfully created',
       data: {
         transaction: {
-          _id: updateTransaction._id,
-          timeStamp: updateTransaction.timeStamp,
-          date: updateTransaction.date,
-          type: updateTransaction.type,
-          category: updateTransaction.category,
-          ['comment']: updateTransaction['comment'],
-          sum: updateTransaction.sum,
-          monthlyBalance: updateTransaction.monthlyBalance,
+          _id: transaction._id,
+          timeStamp: transaction.timeStamp,
+          date: transaction.date,
+          type: transaction.type,
+          category: transaction.category,
+          ['comment']: transaction['comment'],
+          sum: transaction.sum,
+          balance: transaction.balance,
         },
       },
     })

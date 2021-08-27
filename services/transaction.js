@@ -1,5 +1,4 @@
 const { Transaction } = require('../models')
-const { getMonth, getYear } = require('../helpers/dateParser')
 
 const add = async ({
   timeStamp,
@@ -11,7 +10,7 @@ const add = async ({
   comment,
   sum,
   owner,
-  monthlyBalance,
+  balance,
 }) => {
   const newTransaction = await new Transaction({
     timeStamp,
@@ -23,53 +22,59 @@ const add = async ({
     comment,
     sum,
     owner,
-    monthlyBalance,
+    balance,
   })
   await newTransaction.save()
   return newTransaction
 }
 
-const getlastTransaction = async (userId, month, year) => {
+const getPreviousTransaction = async (userId, timeStamp) => {
   const { docs } = await Transaction.paginate(
-    { owner: userId, month, year },
+    { owner: userId, timeStamp: { $lt: timeStamp } },
     {
-      select: 'date timeStamp category sum monthlyBalance',
-      sort: { timeStamp: 1, createdAt: 1 },
+      select: 'date timeStamp category sum balance',
+      sort: { timeStamp: -1, createdAt: -1 },
     },
   )
 
   return docs.length === 0 ? null : docs[0]
 }
 
-const getAll = async (userId, query) => {
-  const date = Date.now()
-  const currentMonth = getMonth(date)
-  const currentYear = getYear(date)
+const getAfterTransactions = async (userId, timeStamp) => {
+  const { docs } = await Transaction.paginate(
+    { owner: userId, timeStamp: { $gt: timeStamp } },
+    {
+      select: 'date timeStamp category sum balance',
+      sort: { timeStamp: 1, createdAt: 1 },
+    },
+  )
 
-  const {
-    page = 1,
-    limit = 5000,
-    month = currentMonth,
-    year = currentYear,
-    sortOrder = -1,
-  } = query
+  return docs.length === 0 ? null : docs
+}
+
+const getAll = async (userId, query) => {
+  const { page = 1, limit = 5000, month, year, sortOrder = -1 } = query
 
   const options = {
     page,
     limit,
     sort: { timeStamp: sortOrder, createdAt: sortOrder },
-    select:
-      'timeStamp date month year type category comment sum owner monthlyBalance',
+    select: 'timeStamp date month year type category comment sum owner balance',
     populate: { path: 'category', select: 'type name' },
   }
 
   const opt = { ...options }
 
-  return await Transaction.paginate({ owner: userId, year, month }, opt)
+  if (month && year) {
+    return await Transaction.paginate({ owner: userId, year, month }, opt)
+  }
+
+  return await Transaction.paginate({ owner: userId }, opt)
 }
 
 module.exports = {
   add,
-  getlastTransaction,
+  getPreviousTransaction,
   getAll,
+  getAfterTransactions,
 }
