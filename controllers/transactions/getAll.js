@@ -1,7 +1,7 @@
 const { transaction: service } = require('../../services')
 const { HttpCode } = require('../../helpers/constants')
 
-const getAllMonthly = async (req, res, next) => {
+const getAll = async (req, res, next) => {
   const { id: userId } = req.user
 
   try {
@@ -18,4 +18,4 @@ const getAllMonthly = async (req, res, next) => {
   }
 }
 
-module.exports = getAllMonthly
+module.exports = getAll
