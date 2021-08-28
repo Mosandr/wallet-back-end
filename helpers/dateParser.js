@@ -1,6 +1,6 @@
 const getDay = timeStamp => {
   const date = new Date(timeStamp)
-  return date.getDate().toString()
+  return date.getDate().toString().padStart(2, '0')
 }
 const getMonth = timeStamp => {
   const date = new Date(timeStamp)
