@@ -33,6 +33,7 @@ const login = async (req, res, next) => {
           email: user.email,
           name: user.name,
           token: token,
+          totalBalance: user.totalBalance,
         },
       },
     })
