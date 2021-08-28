@@ -35,6 +35,7 @@ const register = async (req, res, next) => {
           email: newUser.email,
           name: newUser.name,
           token: token,
+          totalBalance: newUser.totalBalance,
         },
       },
     })
