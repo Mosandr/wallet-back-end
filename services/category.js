@@ -7,7 +7,7 @@ const add = async ({ name, type, color }) => {
 }
 
 const getAll = async () => {
-  return Category.find({}, ['_id', 'name', 'type'])
+  return Category.find({}, ['_id', 'name', 'type', 'color'])
 }
 
 module.exports = {
