@@ -60,7 +60,7 @@ const getAll = async (userId, query) => {
     limit,
     sort: { timeStamp: sortOrder, createdAt: sortOrder },
     select: 'timeStamp date month year type category comment sum owner balance',
-    populate: { path: 'category', select: 'type name' },
+    populate: { path: 'category', select: 'type name color' },
   }
 
   const opt = { ...options }
