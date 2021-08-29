@@ -1,6 +1,6 @@
 const rateLimit = require('express-rate-limit')
 
-const apiLimiter = rateLimit({ windowMs: 900000, max: 100 })
+const apiLimiter = rateLimit({ windowMs: 900000, max: 1000 })
 
 const signupLimiter = rateLimit({
   windowMs: 3600000,
