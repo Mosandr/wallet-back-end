@@ -24,8 +24,12 @@ const add = async ({
     owner,
     balance,
   })
-  await newTransaction.save()
-  return newTransaction
+  const transaction = await newTransaction.save()
+
+  return await Transaction.findOne({ _id: transaction._id }).populate(
+    'category',
+    'name type color',
+  )
 }
 
 const getPreviousTransaction = async (userId, timeStamp) => {

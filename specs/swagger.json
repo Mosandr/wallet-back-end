@@ -737,8 +737,7 @@
                               "description": "Enum {\"+\" or \"-\"}"
                             },
                             "category": {
-                              "type": "string",
-                              "description": "Category Id"
+                              "$ref": "#/components/schemas/Category"
                             },
                             "comment": {
                               "type": "string"
