@@ -4,7 +4,7 @@ const apiLimiter = rateLimit({ windowMs: 900000, max: 1000 })
 
 const signupLimiter = rateLimit({
   windowMs: 3600000,
-  max: 50,
+  max: 10,
   handler: (req, res) => {
     res.status(429).json({
       status: 'error',

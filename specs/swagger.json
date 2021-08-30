@@ -939,6 +939,9 @@
                                   "type": {
                                     "type": "string",
                                     "example": "-"
+                                  },
+                                  "color": {
+                                    "type": "string"
                                   }
                                 }
                               },
