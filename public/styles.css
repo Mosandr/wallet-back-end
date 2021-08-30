@@ -1,0 +1,22 @@
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-size: 46px;
+  text-align: center;
+}
+
+.description {
+  font-size: 30px;
+  padding: 20px 50px;
+  background: #49cc90;
+  border-radius: 20px;
+}
+
+.docs-link {
+  color: azure;
+}

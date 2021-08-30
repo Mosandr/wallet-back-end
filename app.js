@@ -1,6 +1,7 @@
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
+const path = require('path')
 const { HttpCode } = require('./helpers/constants')
 const helmet = require('helmet')
 const { apiLimiter } = require('./middlewares/limiters')
@@ -25,6 +26,7 @@ app.use(express.json({ limit: 10000 }))
 
 require('./configs/passport-config')
 
+app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api', apiLimiter)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
